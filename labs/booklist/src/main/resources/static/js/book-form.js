@@ -1,4 +1,3 @@
-console.log("my javascript file is loaded")
 const inputElement = document.querySelectorAll("input")
 
 inputElement.forEach((oneInput)=>{
