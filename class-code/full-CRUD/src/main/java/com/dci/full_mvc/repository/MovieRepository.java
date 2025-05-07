@@ -50,7 +50,7 @@ public class MovieRepository {
                  .findFirst()
                  .orElseThrow(()->new RuntimeException("movie Not found"));
 
-         
+
          foundMovie.setDirector(movie.getDirector());
         foundMovie.setDuration(movie.getDuration());
         foundMovie.setGenre(movie.getGenre());
@@ -60,5 +60,9 @@ public class MovieRepository {
         foundMovie.setWonOscars(movie.isWonOscars());
 
          return foundMovie;
+    }
+
+    public void deleteMovie(Long id){
+        movies.removeIf(movie->movie.getId()==id);
     }
 }

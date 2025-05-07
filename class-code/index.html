@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <form action="/something-else">
+        <label for="name">Name:</label>
+        <input maxlength="255" minlength="5"
+        required type="text" id="name">
+        <p class="error" id="nameError">Name Must be between 5-255 characters</p>
+
+        <label for="releaseYear">Release Year:</label>
+        <input required type="text" id="releaseYear">
+        <p class="error" id="releaseYearError">Release Year must be after year 10 and before the year 3000</p>
+
+        <label for="genre">Genre: </label>
+        <input required type="text" id="genre">
+        <p class="error" id="genreError">Genre is required</p>
+
+        <button>Submit</button>
+    </form>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <button id="outside">Outside Form</button>
+
+
+    <script src="./index.js"></script>
+
+
+</body>
+</html>

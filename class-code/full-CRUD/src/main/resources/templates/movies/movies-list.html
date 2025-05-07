@@ -25,6 +25,9 @@
 
         <a th:href="@{/movies/{id}(id=${movie.id})}">See Movie Details</a>
         <a th:href="@{/movies/update/{id}(id=${movie.id})}">Update Movie Details</a>
+        <form method="post" th:action="@{/movies/delete/{id}(id=${movie.id})}">
+            <button>Delete Movie</button>
+        </form>
 
     </div>
 </body>

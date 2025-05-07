@@ -64,4 +64,11 @@ public class MovieController {
         return "redirect:/movies/" + movie.getId();
     }
 
+
+    @PostMapping("/delete/{id}")
+    public String deleteMovie(@PathVariable Long id){
+        movieRepository.deleteMovie(id);
+
+        return "redirect:/movies";
+    }
 }
