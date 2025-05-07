@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a New Book</title>
+    <style th:replace="~{fragments/fragment :: base-style}"></style>
+
+    <style>
+        #form-page-container {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border: 1px solid #555862;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 👈 shady effect */
+        }
+        form div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 200px;
+            padding: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #666;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{fragments/fragment :: navbar}"></div>
+<div id="form-page-container">
+    <div class="form-container">
+        <form th:action="${index == -1} ? @{/books/create} : @{/books/update/{index}(index=${index})}"
+              th:object="${book}" method="post">
+            <h1 th:text="${index == -1} ? 'Add a New Book' : 'Update Book'"></h1>
+            <div>
+                <label for="title">Title: </label>
+                <input type="text" id="title" th:field="*{title}" minlength="5" maxlength="255" required>
+            </div>
+            <div>
+                <label for="author">Author: </label>
+                <input type="text" id="author" th:field="*{author}">
+            </div>
+            <div>
+                <label for="genre">Genre: </label>
+                <input type="text" id="genre" th:field="*{genre}" minlength="5" maxlength="50">
+            </div>
+            <div>
+                <label for="year">Year: </label>
+                <input type="number" id="year" th:field="*{year}">
+            </div>
+            <div>
+                <label for="price">Price: </label>
+                <input type="number" id="price" th:field="*{price}" required>
+            </div>
+            <div>
+                <label for="in-stock">In Stock: </label>
+                <input type="checkbox" id="in-stock" th:field="*{inStock}">
+            </div>
+            <button type="submit" th:text="${index == -1} ? 'Add Book' : 'Update Book'"></button>
+
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div th:replace="~{fragments/fragment :: footer}"></div>
+</footer>
+</body>
+</html>
