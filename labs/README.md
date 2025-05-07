@@ -1,4 +1,4 @@
-## 🔁 Lab: Update & Delete Books in Your Book List Web App
+## Lab: Update & Delete Books in Your Book List Web App
 
 ### Learning Objectives:
 
@@ -56,15 +56,3 @@
 ## BONUS: Client-Side Validation
 
 Add custom frontend validation using event listeners to the form as to not use the default behavior and have your own custom error messages for the user `book-form.html`
-
----
-
-## 🧪 Testing Instructions
-
-* Start your Spring Boot app
-* Go to [http://localhost:8080/books](http://localhost:8080/books)
-* Test adding a book, editing a book, and deleting a book
-
----
-
-Would you like a code template for any of these controller methods or forms?
