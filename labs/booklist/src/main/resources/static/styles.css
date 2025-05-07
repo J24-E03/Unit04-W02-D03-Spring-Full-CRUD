@@ -48,3 +48,13 @@ h1 {
 .book button:hover {
     background-color: #ddd;
 }
+
+.error {
+    color: #d8000c;
+    background-color: #f8d7da;
+    padding: 6px 10px;
+    margin-top: 4px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    display: none;
+}
