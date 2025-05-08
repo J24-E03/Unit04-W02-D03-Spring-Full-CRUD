@@ -37,21 +37,22 @@
 <div class="content">
     <h1>Book List</h1>
 
-    <div th:each="book, iterStat : ${books}"
+    <div th:each="book : ${books}"
          class="book"
          th:classappend="${book.inStock} ? ' in-stock' : ' out-of-stock'">
-        <p><strong>Title:</strong> <span th:text="${book.getTitle()}"></span></p>
-        <p><strong>Author:</strong> <span th:text="${book.getAuthor()}"></span></p>
-        <p><strong>Year:</strong> <span th:text="${book.getYear()}"></span></p>
-        <p><strong>Genre:</strong> <span th:text="${book.getGenre()}"></span></p>
-        <p><strong>Price:</strong> €<span th:text="${book.getPrice()}"></span></p>
-        <p th:if="${book.isInStock()}">In Stock</p>
-        <p th:unless="${book.isInStock()}">Out of Stock</p>
+        <p><strong>Title:</strong> <span th:text="${book.title}"></span></p>
+        <p><strong>Id:</strong> <span th:text="${book.id}"></span></p>
+        <p><strong>Author:</strong> <span th:text="${book.author}"></span></p>
+        <p><strong>Year:</strong> <span th:text="${book.year}"></span></p>
+        <p><strong>Genre:</strong> <span th:text="${book.genre}"></span></p>
+        <p><strong>Price:</strong> €<span th:text="${book.price}"></span></p>
+        <p th:if="${book.inStock}">In Stock</p>
+        <p th:unless="${book.inStock}">Out of Stock</p>
         <div class="action-buttons">
-            <form th:action="@{/books/{id}(id=${iterStat.index})}" method="get">
+            <form th:action="@{/books/{id}(id=${book.id})}" method="get">
                 <button type="submit" class="update-btn">Update</button>
             </form>
-            <form th:action="@{/books/delete/{id}(id=${iterStat.index})}" method="post">
+            <form th:action="@{/books/delete/{id}(id=${book.id})}" method="post">
                 <button type="submit" class="delete-btn">Delete</button>
             </form>
         </div>

@@ -52,9 +52,9 @@
 <div th:replace="~{fragments/fragment :: navbar}"></div>
 <div id="form-page-container">
     <div class="form-container">
-        <form th:action="${index == -1} ? @{/books/create} : @{/books/update/{index}(index=${index})}"
-              th:object="${book}" method="post">
-            <h1 th:text="${index == -1} ? 'Add a New Book' : 'Update Book'"></h1>
+        <form th:object="${book}" th:action="${book.id == null} ? @{/books/create} : @{/books/update/{id}(id=${book.id})}"
+               method="post">
+            <h1 th:text="${book.id == null} ? 'Add a New Book' : 'Update Book'"></h1>
             <div>
                 <label for="title">Title: </label>
                 <input type="text" id="title" th:field="*{title}" minlength="5" maxlength="255" required>
@@ -84,7 +84,7 @@
                 <label for="in-stock">In Stock: </label>
                 <input type="checkbox" id="in-stock" th:field="*{inStock}">
             </div>
-            <button type="submit" th:text="${index == -1} ? 'Add Book' : 'Update Book'"></button>
+            <button type="submit" th:text="${book.id == null ? 'Add Book' : 'Update Book'}"></button>
 
         </form>
     </div>

@@ -1,8 +1,14 @@
 package com.example.booklist.model;
 
-import org.springframework.stereotype.Component;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "book_id")
+    private Long id;
     private String title;
     private String author;
     private String genre;
@@ -10,7 +16,8 @@ public class Book {
     private boolean inStock;
     private double price;
 
-    public Book(String title, String author, String genre, int year, boolean inStock, double price) {
+    public Book(Long id, String title, String author, String genre, int year, boolean inStock, double price) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -20,6 +27,14 @@ public class Book {
     }
 
     public Book() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -67,17 +82,5 @@ public class Book {
 
     public void setInStock(boolean inStock) {
         this.inStock = inStock;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", year=" + year +
-                ", genre='" + genre + '\'' +
-                ", price=" + price +
-                ", inStock=" + inStock +
-                '}';
     }
 }

@@ -32,26 +32,25 @@ public class BookController {
 
     @PostMapping("/create")
     public String createBook(@ModelAttribute Book book, Model model) {
-        bookRepository.add(book);
+        bookRepository.save(book);
         return "redirect:/books";
     }
 
-    @GetMapping("/{index}")
-    public String getBook(@PathVariable Integer index, Model model) {
-        model.addAttribute("book", bookRepository.findByIndex(index));
-        model.addAttribute("index", index);
+    @GetMapping("/{id}")
+    public String getBook(@PathVariable Long id, Model model) {
+        model.addAttribute("book", bookRepository.findById(id).orElseThrow());
         return "books/book-form";
     }
 
-    @PostMapping("/update/{index}")
-    public String updateBook(@PathVariable Integer index, @ModelAttribute Book book, Model model) {
-        bookRepository.save(index, book);
+    @PostMapping("/update/{id}")
+    public String updateBook(@ModelAttribute Book book, Model model) {
+        bookRepository.save(book);
         return "redirect:/books";
     }
 
-    @PostMapping("/delete/{index}")
-    public String deleteBook(@PathVariable Integer index, Model model) {
-        bookRepository.remove(index);
+    @PostMapping("/delete/{id}")
+    public String deleteBook(@PathVariable Long id, Model model) {
+        bookRepository.deleteById(id);
         return "redirect:/books";
     }
 }
